@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>SVGエディタ</title>
+
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">google.load("jquery", "1.7.0"); </script>
+<script type="text/javascript" src="SVGEditor.js"></script>
+<script type="text/javascript" src="Field.js"></script>
+<script type="text/javascript" src="Path.js"></script>
+<script type="text/javascript" src="CompoundPath.js"></script>
+<script type="text/javascript" src="Draggable.js"></script>
+<script type="text/javascript" src="AnchorPoint.js"></script>
+<script type="text/javascript" src="ControlPoint.js"></script>
+<script type="text/javascript" src="SegmentManager.js"></script>
+<script type="text/javascript" src="Segment.js"></script>
+<script type="text/javascript" src="Property.js"></script>
+<script type="text/javascript" src="Selector.js"></script>
+<script type="text/javascript" src="PathSelector.js"></script>
+<script type="text/javascript" src="SegSelector.js"></script>
+<script type="text/javascript" src="APSelector.js"></script>
+<script type="text/javascript" src="Tool.js"></script>
+<script type="text/javascript" src="DirectSelectTool.js"></script>
+<script type="text/javascript" src="PenTool.js"></script>
+<script type="text/javascript" src="ConvertPointTool.js"></script>
+
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div id="svgContainer">
+	<svg id="svg" width="100%" height="99%">
+		<g id="targetLayer" />
+		<g id="uiLayer" />
+<!--			<defs>
+				<font id="Font1">
+					<font-face font-family="orig" font-weight="bold" font-style="normal" units-per-em="300">
+					 </font-face>
+					<missing-glyph><path d="M0,0h200v200h-200z"/></missing-glyph>
+					<glyph unicode="A" horiz-adv-x="150" d="M38,222 L86,46 L137,48 L202,232 L149,229 L117,81 C117,81 88,144 88,143 L144,146 L152,182 L85,175 L74,226 L38,222 z" />
+					<glyph unicode="B" horiz-adv-x="150" d="M6,178 L35,6 C35,6 128,12 128,56 C128,96 48,90 48,90 C48,90 116,99 116,146 C116,193 20,179 20,179 L24,157 C24,157 91,173 94,143 C97,113 30,102 30,102 L36,77 C36,77 106,78 107,53 C108,28 47,18 47,18 L22,179 L6,178 z">
+				</font>
+			</defs>
+			
+			<path  d="M6,178 L35,6 C35,6 128,12 128,56 C128,96 48,90 48,90 C48,90 116,99 116,146 C116,193 20,179 20,179 L24,157 C24,157 91,173 94,143 C97,113 30,102 30,102 L36,77 C36,77 106,78 107,53 C108,28 47,18 47,18 L22,179 L6,178 z"/>
+			<text x="0" y="500" 
+		   style="font-family: 'orig', Helvetica, sans-serif; font-size: 50px;
+				  font-weight: bold; font-style: normal">BABB</text>
+-->
+	</svg>
+</div>
+<div id="control-panel">
+	<section id="toolBtnContainer">
+		<button id="directSelectToolBtn" class="toolBtn" value="ダイレクト選択ツール" title="ダイレクト選択ツール"><div class="icon-holder"></div></button>
+		<button id="penToolBtn" class="toolBtn" value="ペンツール" title="ペンツール"><div class="icon-holder"></button>
+		<button id="convertPointToolBtn" class="toolBtn" value="アンカーポイントの切り替えツール" title="アンカーポイントの切り替えツール"><div class="icon-holder"></button>
+	</section>
+	<section id="property-panel">
+		<section id="stroke-width-controler">
+			<label>stroke-width: <input type="text" value="1px" /></label>
+		</section>
+		<section id="color-controler">
+			<label>fill: <input id="fill-color" type="text" value="none" /></label>
+			<label>stroke: <input id="stroke-color" type="text" value="#000" /></label>
+		</section>
+	</section>
+	<section>
+		<button id="compoundBtn">複合パスを作成</button>
+	</section>
+</div>
+</body>
+</html>
