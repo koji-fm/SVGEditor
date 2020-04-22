@@ -2,27 +2,19 @@
 $.SE.CompoundPath = (function () {
 	
 		// サブパスのセグメントを複合パスに移動させる関数
-	var transferSeg = $.browser.safari ?
-			function (subPath, cPath) {
-				
-				while (subPath.target.pathSegList.numberOfItems) {
-					
-					cPath.target.pathSegList.appendItem(subPath.target.pathSegList.getItem(0));
-				}
-			} :
-			function (subPath, cPath) {
-				
-				var cPathSegCount = cPath.target.pathSegList.numberOfItems,
-					subPathSegCount;
-				
-				for (subPathSegCount = 0; subPath.target.pathSegList.numberOfItems; subPathSegCount++) {
-					
-					cPath.target.pathSegList.appendItem(subPath.target.pathSegList.getItem(0));
-					subPath.target.pathSegList.removeItem(0);
-					if (subPath.segList[subPathSegCount]) subPath.segList[subPathSegCount].targetSeg = cPath.target.pathSegList.getItem(cPathSegCount);
-					cPathSegCount++;
-				}
-			};
+	var transferSeg = function (subPath, cPath) {
+		
+		var cPathSegCount = cPath.target.pathSegList.numberOfItems,
+			subPathSegCount;
+		
+		for (subPathSegCount = 0; subPath.target.pathSegList.numberOfItems; subPathSegCount++) {
+			
+			cPath.target.pathSegList.appendItem(subPath.target.pathSegList.getItem(0));
+			subPath.target.pathSegList.removeItem(0);
+			if (subPath.segList[subPathSegCount]) subPath.segList[subPathSegCount].targetSeg = cPath.target.pathSegList.getItem(cPathSegCount);
+			cPathSegCount++;
+		}
+	};
 	
 	return function (pathSelection) {
 	
